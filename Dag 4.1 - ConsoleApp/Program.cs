@@ -1,17 +1,13 @@
-﻿string[] values = { "12,3", "45", "ABC", "11", "DEF" };
+﻿int value1 = 12;
+decimal value2 = 6.2m;
+float value3 = 4.3f;
 
-string message = "";
-decimal total = 0m;
-foreach (string value in values)
-{
-	if (decimal.TryParse(value, out decimal result))
-	{
-		total += result;
-	}
-	else
-	{
-		message += value;
-	}
-}
-Console.WriteLine($"Message: {message}");
-Console.WriteLine($"Total: {total}");
+// Your code here to set result1
+// Hint: You need to round the result to nearest integer (don't just truncate)
+Console.WriteLine($"Divide value1 by value2, display the result as an int: {Convert.ToInt32((value1 / value2))}");
+
+// Your code here to set result2
+Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {(value2 / (decimal)value3)}");
+
+// Your code here to set result3
+Console.WriteLine($"Divide value3 by value1, display the result as a float: {(float)(value3 / value1)}");
