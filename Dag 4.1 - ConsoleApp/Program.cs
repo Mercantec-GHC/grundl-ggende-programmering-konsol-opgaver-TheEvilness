@@ -1,13 +1,29 @@
-﻿int value1 = 12;
-decimal value2 = 6.2m;
-float value3 = 4.3f;
+﻿/* First exercise
+string pangram = "The quick brown fox jumps over the lazy dog";
 
-// Your code here to set result1
-// Hint: You need to round the result to nearest integer (don't just truncate)
-Console.WriteLine($"Divide value1 by value2, display the result as an int: {Convert.ToInt32((value1 / value2))}");
+string[] split = pangram.Split(" ");
+List<string> reversedWords = new List<string>();
+foreach (string word in split)
+{
+	char[] array = word.ToCharArray();
+	Array.Reverse(array);
+	reversedWords.Add(new string(array));
+}
+foreach (string word in reversedWords)
+{
+	Console.Write($"{word} ");
+}*/
 
-// Your code here to set result2
-Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {(value2 / (decimal)value3)}");
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+List<string> split = orderStream.Split(',').ToList();
+split.Sort();
 
-// Your code here to set result3
-Console.WriteLine($"Divide value3 by value1, display the result as a float: {(float)(value3 / value1)}");
+foreach (string orderid in split)
+{
+	string error = "";
+	if (orderid.Length != 4)
+	{
+		error = "\t- Error";
+	}
+	Console.WriteLine($"{orderid}{error}");
+}
