@@ -1,22 +1,35 @@
-﻿Random random = new Random();
-int luck = random.Next(100);
-
-string[] text = { "You have much to", "Today is a day to", "Whatever work you do", "This is an ideal time to" };
-string[] good = { "look forward to.", "try new things!", "is likely to succeed.", "accomplish your dreams!" };
-string[] bad = { "fear.", "avoid major decisions.", "may have unexpected outcomes.", "re-evaluate your life." };
-string[] neutral = { "appreciate.", "enjoy time with friends.", "should align with your values.", "get in tune with nature." };
-
-GetSomeGodDamnFortunes();
-luck = random.Next(400);
-GetSomeGodDamnFortunes();
-
-
-void GetSomeGodDamnFortunes()
+﻿string[,] corporate =
 {
-	Console.WriteLine("A fortune teller whispers the following words:");
-	string[] fortune = (luck > 75 ? good : (luck < 25 ? bad : neutral));
-	for (int i = 0; i < 4; i++)
-	{
-		Console.Write($"{text[i]} {fortune[i]} ");
-	}
+	{"Robert", "Bavin"}, {"Simon", "Bright"},
+	{"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+	{"Sarah", "Delucchi"}, {"Sinan", "Ali"}
+};
+
+string[,] external =
+{
+	{"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+	{"Shay", "Lawrence"}, {"Daren", "Valdes"}
+};
+
+string externalDomain = "hayworth.com";
+
+for (int i = 0; i < corporate.GetLength(0); i++)
+{
+	string firstPart = corporate[i, 0].Substring(0, 2);
+	string lastPart = corporate[i, 1];
+	DisplayEmail(firstPart.ToLower(), lastPart.ToLower());
+}
+
+for (int i = 0; i < external.GetLength(0); i++)
+{
+	string firstPart = external[i, 0].Substring(0, 2);
+	string lastPart = external[i, 1];
+	DisplayEmail(firstPart.ToLower(), lastPart.ToLower(), externalDomain);
+}
+
+void DisplayEmail(string firstPart, string lastPart, string domain = "contoso.com")
+{
+	string username = firstPart + lastPart;
+	string email = $"{username}@{domain}";
+	Console.WriteLine(email);
 }
